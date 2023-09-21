@@ -5,34 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AutomationLoginTests {
-    private static Report report = new Report();
+public class AutomationLoginTestsModel {
+    static final Report report = new Report();
     private static WebDriver driver;
 
-    public static void main(String[] args) {
-        // Cenário 1: TESTE DE LOGIN COM CREDENCIAIS VÁLIDAS
-        // - Dado que o usuário esteja na página de login do "Automation Practice"
-        // - Quando o usuário inserir um email de usuário e senha válidos e clicar no botão "Sign in"
-        // - Então o usuário deve ser redirecionado para a página da conta do usuário
-        TestLoginValidCredentials();
-
-        // Cenário 2: TESTE DE LOGIN COM CREDENCIAIS INVÁLIDAS
-        // - Dado que o usuário esteja na página de login do "Automation Practice"
-        // - Quando o usuário inserir um email de usuário e/ou senha inválidos e clicar no botão "Sign in"
-        // - Então o sistema deve exibir uma mensagem de erro informando que as credenciais são inválidas
-        TestLoginInvalidCredentials();
-
-        // Cenário 3: TESTE DE RECUPERAÇÃO DE SENHA DE UMA CONTA VÁLIDA
-        // - Dado que o usuário esteja na página de login do "Automation Practice"
-        // - Quando o usuário clicar no link "Forgot your password?", inserir seu endereço de e-mail registrado e clicar no botão "Retrieve Password"
-        // - Então o sistema deve exibir uma mensagem informando que um e-mail de recuperação de senha foi enviado com sucesso
-        TestPasswordRecovery();
-
-        // Imprimir o relatório
-        report.printOut();
-    }
-
-    private static void TestLoginValidCredentials() {
+    static void TestLoginValidCredentials() {
         openBrowser();
 
         WebElement usernameField = driver.findElement(By.id("email"));
@@ -47,9 +24,9 @@ public class AutomationLoginTests {
         driver.get("http://www.automationpractice.pl/index.php?controller=my-account");
 
         WebElement accountPageHeader = driver.findElement(By.className("page-heading"));
-        boolean passou = accountPageHeader.getText().equals("MY ACCOUNT");
-        report.registrarTeste(passou);
-        if (passou) {
+        boolean pass = accountPageHeader.getText().equals("MY ACCOUNT");
+        report.registerTest(pass);
+        if (pass) {
             System.out.println("Cenário 1 Passou - O usuário foi redirecionado para a página da conta do usuário.");
         } else {
             System.out.println("Cenário 1 Falhou - O usuário não foi redirecionado para a página da conta do usuário.");
@@ -58,7 +35,7 @@ public class AutomationLoginTests {
         closeBrowser();
     }
 
-    private static void TestLoginInvalidCredentials() {
+    public void TestLoginInvalidCredentials() {
         openBrowser();
 
         WebElement usernameField = driver.findElement(By.id("email"));
@@ -71,9 +48,9 @@ public class AutomationLoginTests {
         signInButton.click();
 
         WebElement errorAlert = driver.findElement(By.className("alert-danger"));
-        boolean passou = errorAlert.isDisplayed();
-        report.registrarTeste(passou);
-        if (passou) {
+        boolean pass = errorAlert.isDisplayed();
+        report.registerTest(pass);
+        if (pass) {
             System.out.println("Cenário 2 Passou - Foi exibida uma mensagem de erro informando que as credenciais são inválidas.");
         } else {
             System.out.println("Cenário 2 Falhou - A mensagem de erro não foi exibida.");
@@ -82,7 +59,7 @@ public class AutomationLoginTests {
         closeBrowser();
     }
 
-    private static void TestPasswordRecovery() {
+    public void TestPasswordRecovery() {
         openBrowser();
 
         WebElement forgotPasswordLink = driver.findElement(By.linkText("Forgot your password?"));
@@ -98,9 +75,9 @@ public class AutomationLoginTests {
         retrievePasswordButton.click();
 
         WebElement successMessage = driver.findElement(By.className("alert-success"));
-        boolean passou = successMessage.getText().contains("A confirmation email has been sent");
-        report.registrarTeste(passou);
-        if (passou) {
+        boolean pass = successMessage.getText().contains("A confirmation email has been sent");
+        report.registerTest(pass);
+        if (pass) {
             System.out.println("Cenário 3 Passou - Foi exibida uma mensagem de sucesso após solicitação de recuperação de senha.");
         } else {
             System.out.println("Cenário 3 Falhou - A mensagem de sucesso não foi exibida.");
@@ -109,7 +86,7 @@ public class AutomationLoginTests {
         closeBrowser();
     }
 
-    private static void openBrowser() {
+    public static void openBrowser() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lucas\\IdeaProjects\\DesafioTecnicoQualityAssuranceEngineer\\chromedriver.exe");
 
         driver = new ChromeDriver();

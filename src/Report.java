@@ -9,7 +9,7 @@ public class Report {
         this.testsFailed = 0;
     }
 
-    public void registrarTeste(boolean pass) {
+    public void registerTest(boolean pass) {
         totalTests++;
         if (pass) {
             testsPass++;
