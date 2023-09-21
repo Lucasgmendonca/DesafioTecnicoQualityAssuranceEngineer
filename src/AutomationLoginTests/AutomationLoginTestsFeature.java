@@ -1,3 +1,5 @@
+package AutomationLoginTests;
+
 public class AutomationLoginTestsFeature {
     public static void main(String[] args) {
         AutomationLoginTestsFeature automationLoginTestsFeature = new AutomationLoginTestsFeature();

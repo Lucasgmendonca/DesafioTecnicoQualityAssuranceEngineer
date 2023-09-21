@@ -1,3 +1,5 @@
+package AutomationLoginTests;
+
 public class Report {
     private int totalTests;
     private int testsPass;
