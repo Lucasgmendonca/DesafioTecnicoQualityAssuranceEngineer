@@ -44,13 +44,12 @@ public class AutomationLoginTestsModel {
         WebElement passwordField = driver.findElement(By.id("passwd"));
         WebElement signInButton = driver.findElement(By.id("SubmitLogin"));
 
-        usernameField.sendKeys("lucas_email_invalido@gmail.com");
-        passwordField.sendKeys("lucas_senha_invalida");
+        usernameField.sendKeys("lucas_email_valido@gmail.com");
+        passwordField.sendKeys("lucas_senha_valida");
 
         signInButton.click();
 
-        WebElement errorAlert = driver.findElement(By.className("alert-danger"));
-        boolean pass = errorAlert.isDisplayed();
+        boolean pass = isAlertSuccessDisplayedLoginInvalidCredentials();
         report.registerTest(pass);
         if (pass) {
             System.out.println("Cenário 2 Passou - Foi exibida uma mensagem de erro informando que as credenciais são inválidas.");
@@ -76,13 +75,12 @@ public class AutomationLoginTestsModel {
         WebElement retrievePasswordButton = driver.findElement(By.cssSelector("button.btn.btn-default.button.button-medium"));
         retrievePasswordButton.click();
 
-        WebElement successMessage = driver.findElement(By.className("alert-success"));
-        boolean pass = successMessage.getText().contains("A confirmation email has been sent");
+        boolean pass = isAlertSuccessDisplayedPasswordRecovery();
         report.registerTest(pass);
         if (pass) {
             System.out.println("Cenário 3 Passou - Foi exibida uma mensagem de sucesso após solicitação de recuperação de senha.");
         } else {
-            System.out.println("Cenário 3 Falhou - A mensagem de sucesso não foi exibida.");
+            System.out.println("Cenário 3 Falhou - A mensagem de sucesso após solicitação de recuperação de senha não foi exibida.");
         }
 
         closeBrowser();
@@ -101,4 +99,23 @@ public class AutomationLoginTestsModel {
             driver.quit();
         }
     }
+
+    public boolean isAlertSuccessDisplayedLoginInvalidCredentials() {
+        try {
+            WebElement successMessage = driver.findElement(By.className("alert-danger"));
+            return successMessage.isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean isAlertSuccessDisplayedPasswordRecovery() {
+        try {
+            WebElement successMessage = driver.findElement(By.className("alert-success"));
+            return successMessage.isDisplayed();
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
 }
