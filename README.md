@@ -21,7 +21,7 @@ Siga as etapas abaixo para executar o código:
     - [Java](https://www.selenium.dev/downloads/)
     - [ChromeDriver](https://chromedriver.chromium.org/downloads)
       
-2.  **Execução**: Execute o script: `AutomationLoginTests.java`.
+2.  **Execução**: Execute o script: `AutomationLoginTestsFeature.java`.
 
 3. **Resultados**: São feitos testes em 3 diferentes tipos de cenário na página de login do site “Automation Practice”.
 
