@@ -5,10 +5,12 @@
 Criar e automatizar possíveis cenários de teste de um projeto web baseando na página de login do site “Automation Practice”. 
 
 
+
 ## 📝 ATRIBUTOS
   - Framework: Selenium WebDriver
   - Linguagem: Java
   - IDE: IntellijIdea
+
 
 
 ## 🔎 COMO USAR
@@ -22,6 +24,7 @@ Siga as etapas abaixo para executar o código:
 2.  **Execução**: Execute o script: `AutomationLoginTests.java`.
 
 3. **Resultados**: São feitos testes em 3 diferentes tipos de cenário na página de login do site “Automation Practice”.
+
 
 
 ## ⏩ Cenários
@@ -40,6 +43,7 @@ Siga as etapas abaixo para executar o código:
     - Dado que o usuário esteja na página de login do "Automation Practice".
     - Quando o usuário clicar no link "Forgot your password?", inserir seu endereço de e-mail registrado e clicar no botão "Retrieve Password".
     - Então o sistema deve exibir uma mensagem informando que um e-mail de recuperação de senha foi enviado com sucesso.
+
 
 
 ## 🔗 Referências
