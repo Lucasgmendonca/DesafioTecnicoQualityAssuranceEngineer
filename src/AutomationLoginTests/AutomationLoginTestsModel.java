@@ -44,8 +44,8 @@ public class AutomationLoginTestsModel {
         WebElement passwordField = driver.findElement(By.id("passwd"));
         WebElement signInButton = driver.findElement(By.id("SubmitLogin"));
 
-        usernameField.sendKeys("lucas_email_valido@gmail.com");
-        passwordField.sendKeys("lucas_senha_valida");
+        usernameField.sendKeys("lucas_email_invalido@gmail.com");
+        passwordField.sendKeys("lucas_senha_invalida");
 
         signInButton.click();
 
