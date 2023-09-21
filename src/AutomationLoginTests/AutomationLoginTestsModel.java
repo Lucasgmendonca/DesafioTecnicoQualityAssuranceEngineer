@@ -11,7 +11,7 @@ public class AutomationLoginTestsModel {
     static final Report report = new Report();
     private static WebDriver driver;
 
-    static void TestLoginValidCredentials() {
+    public static void TestLoginValidCredentials() {
         openBrowser();
 
         WebElement usernameField = driver.findElement(By.id("email"));
