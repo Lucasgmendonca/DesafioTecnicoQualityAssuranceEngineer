@@ -49,7 +49,7 @@ public class AutomationLoginTestsModel {
 
         signInButton.click();
 
-        boolean pass = isAlertSuccessDisplayedLoginInvalidCredentials();
+        boolean pass = checkElementVisibility(By.className("alert-danger"));
         report.registerTest(pass);
         if (pass) {
             System.out.println("Cenário 2 Passou - Foi exibida uma mensagem de erro informando que as credenciais são inválidas.");
@@ -75,7 +75,7 @@ public class AutomationLoginTestsModel {
         WebElement retrievePasswordButton = driver.findElement(By.cssSelector("button.btn.btn-default.button.button-medium"));
         retrievePasswordButton.click();
 
-        boolean pass = isAlertSuccessDisplayedPasswordRecovery();
+        boolean pass = checkElementVisibility(By.className("alert-success"));
         report.registerTest(pass);
         if (pass) {
             System.out.println("Cenário 3 Passou - Foi exibida uma mensagem de sucesso após solicitação de recuperação de senha.");
@@ -100,19 +100,10 @@ public class AutomationLoginTestsModel {
         }
     }
 
-    public boolean isAlertSuccessDisplayedLoginInvalidCredentials() {
+    private boolean checkElementVisibility(By locator) {
         try {
-            WebElement successMessage = driver.findElement(By.className("alert-danger"));
-            return successMessage.isDisplayed();
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    public boolean isAlertSuccessDisplayedPasswordRecovery() {
-        try {
-            WebElement successMessage = driver.findElement(By.className("alert-success"));
-            return successMessage.isDisplayed();
+            WebElement element = driver.findElement(locator);
+            return element.isDisplayed();
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
