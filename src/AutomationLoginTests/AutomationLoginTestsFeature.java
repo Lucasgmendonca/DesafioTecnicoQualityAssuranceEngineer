@@ -28,6 +28,6 @@ public class AutomationLoginTestsFeature {
         automationLoginTestsModel.TestPasswordRecovery();
 
         // Imprimir o relatório
-        AutomationLoginTestsModel.report.printOut();
+        automationLoginTestsModel.printReport();
     }
 }
